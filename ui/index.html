@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="en" data-theme="{{THEME}}" data-font="{{FONT}}" data-motion="{{MOTION}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cantevenReMark</title>
+<link rel="icon" href="{{ICON}}">
+<style>
+/* =====================================================================
+   Themes are just sets of variables. To add a theme, copy a block below.
+   ===================================================================== */
+:root, :root[data-theme="light"] {
+  --desk:
+    radial-gradient(ellipse 70% 40% at 20% 108%, #8fd14f, #4fa62a 60%, transparent 61%),
+    radial-gradient(ellipse 80% 38% at 85% 112%, #8fd14f, #4fa62a 60%, transparent 61%),
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.55) 0 40px, transparent 41px),
+    radial-gradient(circle at 88% 26%, rgba(255,255,255,.35) 0 26px, transparent 27px),
+    linear-gradient(180deg, #7cc4f5, #c4e8ff 55%, #f2fbff);
+  --font: Tahoma, Verdana, "Segoe UI", Geneva, sans-serif; --font-head: "Trebuchet MS", "Lucida Grande", Tahoma, sans-serif; --fs: 12px;
+  --win: #fff; --win-2: #f5f9fd; --ink: #1c2a3a; --ink-2: #4a5a6c; --ink-3: #7d8a99; --line: #9db7d6; --line-2: #c9d8ea;
+  --row: #eef5fc; --sel: #cfe5fb; --link: #0645ad; --head: #144c96; --accent: #2b8be6; --ok: #2c8a12; --bad: #c4231a;
+  --win-border: 1px solid #1f6fc4; --win-radius: 9px 9px 6px 6px; --win-shadow: 0 0 0 1px rgba(255,255,255,.5) inset, 0 14px 40px rgba(10,40,90,.35);
+  --title-bg: linear-gradient(180deg, #5aa6f5 0%, #2f86e8 8%, #0b55c8 48%, #0846a8 52%, #1f6fe0 100%); --title-ink: #fff; --title-shadow: 0 1px 1px rgba(0,0,0,.45); --title-border: 1px solid #06348a;
+  --tctl-bg: linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,.06)); --tctl-border: 1px solid rgba(255,255,255,.4); --tctl-ink: #fff;
+  --bar-bg: linear-gradient(180deg, #ece9d8, #d9d4bf); --bar-line: #a5a28f;
+  --btn-bg: linear-gradient(180deg, #fff 0%, #eef4fb 45%, #d8e6f4 50%, #e9f2fb 100%); --btn-ink: #08325f; --btn-border: 1px solid #6d93bd; --btn-radius: 14px; --btn-shadow: 0 1px 2px rgba(0,0,0,.18), inset 0 1px 0 #fff; --btn-hover: 0 0 0 2px rgba(80,160,255,.35), inset 0 1px 0 #fff;
+  --pri-bg: linear-gradient(180deg, #bfe6ff 0%, #6cbcff 45%, #2b8be6 50%, #45a6ff 100%); --pri-ink: #fff; --pri-border: 1px solid #1f6fc4; --pri-text-shadow: 0 -1px 0 rgba(0,0,0,.35);
+  --go-bg: linear-gradient(180deg, #e3ffcc 0%, #9be35a 45%, #4fae1f 50%, #6cc63a 100%); --go-ink: #fff; --go-border: 1px solid #2f7d10;
+  --drop-bg: linear-gradient(180deg, rgba(220,240,255,.55), rgba(255,255,255,.3)); --drop-border: 2px dashed #7aa7d8; --drop-over: #d6ecff; --radius: 10px;
+  --orb-bg: radial-gradient(ellipse 60% 38% at 50% 22%, rgba(255,255,255,.95), rgba(255,255,255,0) 70%), radial-gradient(circle at 50% 80%, #a9e4ff, #2b8be6 62%, #1460b8 100%); --orb-border: 1px solid #1460b8; --orb-ink: #fff;
+  --ico-write: radial-gradient(ellipse 70% 40% at 50% 15%, rgba(255,255,255,.9), transparent 70%), linear-gradient(180deg, #9fd7ff, #2b80d8);
+  --ico-print: radial-gradient(ellipse 70% 40% at 50% 15%, rgba(255,255,255,.9), transparent 70%), linear-gradient(180deg, #ffe08a, #f0a01e);
+  --ico-plain: radial-gradient(ellipse 70% 40% at 50% 15%, rgba(255,255,255,.9), transparent 70%), linear-gradient(180deg, #c3f59a, #3fa31a);
+  --choice-bg: linear-gradient(180deg, #fff, #f5f9fd); --choice-border: 1px solid #c9d8ea; --choice-on-bg: linear-gradient(180deg, #eaf6ff, #d4ebff); --choice-on-border: 1px solid #2b8be6; --choice-on-shadow: 0 0 0 2px rgba(43,139,230,.3);
+  --pill-bg: linear-gradient(180deg, #fff, #e3ecf6); --pill-ink: #1c2a3a; --pill-on-bg: linear-gradient(180deg, #9fd2ff, #4aa3f0); --pill-on-ink: #fff; --pill-border: #7f9db9;
+  --prog-bg: #fff; --prog-border: 1px solid #686868; --prog-fill: repeating-linear-gradient(90deg, transparent 0 8px, #fff 8px 10px), linear-gradient(180deg, #d9ffc7 0%, #4fcf27 45%, #2ba10e 55%, #7de05a 100%);
+  --ok-bg: linear-gradient(180deg, #f4ffe9, #ddf5c8); --ok-ink: #1f5b0a; --ok-border: 1px solid #8fca6a;
+  --check-bg: radial-gradient(ellipse 60% 38% at 50% 22%, rgba(255,255,255,.95), transparent 70%), radial-gradient(circle at 50% 80%, #c4ff8f, #3fa31a 70%);
+  --warn-bg: linear-gradient(180deg, #fffbe6, #fff1c2); --warn-ink: #4a3a00; --warn-border: 1px solid #e0b84a;
+  --th-bg: linear-gradient(180deg, #fbfbf8, #e6e3d4); --th-border: #b9b6a2; --input-bg: #fff; --input-border: #7f9db9;
+  --splash-bg: radial-gradient(circle at 50% 40%, #5fb3ff 0%, #1f6fe0 45%, #0b3c9c 100%); --splash-ink: #fff; --splash-sub: #dcefff;
+  --splash-w2: linear-gradient(180deg, #fff6b0 0%, #ffd23a 48%, #ff9a1a 52%, #ffc94a 100%); --splash-shadow: 0 2px 0 #0b3c9c, 0 4px 8px rgba(0,0,0,.35);
+  --balloon-bg: #ffffe1; --balloon-ink: #000; --balloon-border: 1px solid #000;
+  --dot-on: radial-gradient(circle at 35% 30%, #fff 0 15%, #ffcf4a 30%, #f39a12 75%); --dot-done: radial-gradient(circle at 35% 30%, #fff 0 15%, #9be35a 30%, #3fa31a 75%); --dot-off: #fff; --dot-border: 1px solid #6d93bd;
+  --flash-a: #111; --flash-b: #f4f2ec; --ghost-blend: multiply;
+  --glow: none;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --desk:
+    radial-gradient(ellipse 70% 40% at 20% 108%, #1e5a3a, #10351f 60%, transparent 61%),
+    radial-gradient(ellipse 80% 38% at 85% 112%, #1e5a3a, #10351f 60%, transparent 61%),
+    radial-gradient(circle at 80% 18%, #fffbe0 0 22px, transparent 23px),
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.7) 0 1px, transparent 2px), radial-gradient(circle at 40% 12%, rgba(255,255,255,.7) 0 1px, transparent 2px), radial-gradient(circle at 60% 26%, rgba(255,255,255,.6) 0 1px, transparent 2px),
+    linear-gradient(180deg, #0b1a3a, #16336a 60%, #2a4f8f);
+  --win: #172338; --win-2: #1c2b45; --ink: #e6eefa; --ink-2: #b5c4da; --ink-3: #8394ad; --line: #3d5a86; --line-2: #2c4268;
+  --row: #1d2d48; --sel: #27406a; --link: #8cc4ff; --head: #9fd0ff; --accent: #4aa3f0; --ok: #7be05a; --bad: #ff7b6e;
+  --bar-bg: linear-gradient(180deg, #22324f, #1a2740); --bar-line: #0e1626;
+  --btn-bg: linear-gradient(180deg, #3e5a88 0%, #2a426a 48%, #1f3356 52%, #2c4670 100%); --btn-ink: #e6eefa; --btn-border: 1px solid #0e1a2e; --btn-shadow: 0 1px 2px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.18);
+  --drop-bg: rgba(40,80,140,.25); --drop-border: 2px dashed #3d6aa8; --drop-over: rgba(60,110,180,.4);
+  --choice-bg: linear-gradient(180deg, #1c2b45, #172338); --choice-border: 1px solid #2c4268; --choice-on-bg: linear-gradient(180deg, #23406e, #1b325a);
+  --pill-bg: linear-gradient(180deg, #2a3c5c, #1f2e4a); --pill-ink: #e6eefa; --pill-border: #3d5a86;
+  --prog-bg: #0f1828; --prog-border: 1px solid #3d5a86;
+  --ok-bg: linear-gradient(180deg, #1f3d22, #183219); --ok-ink: #bff3a0; --ok-border: 1px solid #3f7a2a;
+  --warn-bg: linear-gradient(180deg, #3a3418, #2c2710); --warn-ink: #f3e3a2; --warn-border: 1px solid #7a6520;
+  --th-bg: linear-gradient(180deg, #2a3c5c, #1f2e4a); --th-border: #10192a; --input-bg: #0f1828; --input-border: #3d5a86;
+  --splash-bg: radial-gradient(circle at 50% 40%, #2a4f8f 0%, #16336a 50%, #0b1a3a 100%);
+  --dot-off: #172338; --flash-b: #172338; --ghost-blend: screen;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="system"] {
+    --desk: radial-gradient(ellipse 70% 40% at 20% 108%, #1e5a3a, #10351f 60%, transparent 61%), radial-gradient(ellipse 80% 38% at 85% 112%, #1e5a3a, #10351f 60%, transparent 61%), radial-gradient(circle at 80% 18%, #fffbe0 0 22px, transparent 23px), linear-gradient(180deg, #0b1a3a, #16336a 60%, #2a4f8f);
+    --win: #172338; --win-2: #1c2b45; --ink: #e6eefa; --ink-2: #b5c4da; --ink-3: #8394ad; --line: #3d5a86; --line-2: #2c4268;
+    --row: #1d2d48; --sel: #27406a; --link: #8cc4ff; --head: #9fd0ff; --accent: #4aa3f0; --ok: #7be05a; --bad: #ff7b6e;
+    --bar-bg: linear-gradient(180deg, #22324f, #1a2740); --bar-line: #0e1626;
+    --btn-bg: linear-gradient(180deg, #3e5a88 0%, #2a426a 48%, #1f3356 52%, #2c4670 100%); --btn-ink: #e6eefa; --btn-border: 1px solid #0e1a2e; --btn-shadow: 0 1px 2px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.18);
+    --drop-bg: rgba(40,80,140,.25); --drop-border: 2px dashed #3d6aa8; --drop-over: rgba(60,110,180,.4);
+    --choice-bg: linear-gradient(180deg, #1c2b45, #172338); --choice-border: 1px solid #2c4268; --choice-on-bg: linear-gradient(180deg, #23406e, #1b325a);
+    --pill-bg: linear-gradient(180deg, #2a3c5c, #1f2e4a); --pill-ink: #e6eefa; --pill-border: #3d5a86;
+    --prog-bg: #0f1828; --prog-border: 1px solid #3d5a86;
+    --ok-bg: linear-gradient(180deg, #1f3d22, #183219); --ok-ink: #bff3a0; --ok-border: 1px solid #3f7a2a;
+    --warn-bg: linear-gradient(180deg, #3a3418, #2c2710); --warn-ink: #f3e3a2; --warn-border: 1px solid #7a6520;
+    --th-bg: linear-gradient(180deg, #2a3c5c, #1f2e4a); --th-border: #10192a; --input-bg: #0f1828; --input-border: #3d5a86;
+    --splash-bg: radial-gradient(circle at 50% 40%, #2a4f8f 0%, #16336a 50%, #0b1a3a 100%);
+    --dot-off: #172338; --flash-b: #172338; --ghost-blend: screen;
+    color-scheme: dark;
+  }
+}
+/* E-ink: paper and ink, like a reMarkable */
+:root[data-theme="eink"] {
+  --desk: repeating-linear-gradient(0deg, rgba(0,0,0,.02) 0 1px, transparent 1px 3px), #d8d5cc;
+  --win: #f4f2ec; --win-2: #ecebe5; --ink: #111; --ink-2: #333; --ink-3: #6b6b6b; --line: #222; --line-2: #c4c1b8;
+  --row: #ebe9e2; --sel: #dedbd2; --link: #111; --head: #111; --accent: #111; --ok: #111; --bad: #111;
+  --win-border: 2px solid #111; --win-radius: 6px; --win-shadow: 5px 5px 0 #111;
+  --title-bg: #f4f2ec; --title-ink: #111; --title-shadow: none; --title-border: 2px solid #111;
+  --tctl-bg: #fff; --tctl-border: 1.5px solid #111; --tctl-ink: #111;
+  --bar-bg: #e7e4dc; --bar-line: #111;
+  --btn-bg: #fff; --btn-ink: #111; --btn-border: 2px solid #111; --btn-radius: 6px; --btn-shadow: none; --btn-hover: 3px 3px 0 #111;
+  --pri-bg: #111; --pri-ink: #fff; --pri-border: 2px solid #111; --pri-text-shadow: none; --go-bg: #111; --go-ink: #fff; --go-border: 2px solid #111;
+  --drop-bg: transparent; --drop-border: 2px dashed #111; --drop-over: #e3e0d8;
+  --orb-bg: #111; --orb-border: 2px solid #111; --ico-write: #111; --ico-print: #111; --ico-plain: #111;
+  --choice-bg: #f4f2ec; --choice-border: 1.5px solid #bbb8af; --choice-on-bg: #fff; --choice-on-border: 2px solid #111; --choice-on-shadow: 4px 4px 0 #111;
+  --pill-bg: #fff; --pill-ink: #111; --pill-on-bg: #111; --pill-on-ink: #fff; --pill-border: #111;
+  --prog-bg: #fff; --prog-border: 2px solid #111; --prog-fill: repeating-linear-gradient(90deg, #111 0 8px, transparent 8px 11px);
+  --ok-bg: #fff; --ok-ink: #111; --ok-border: 2px solid #111; --check-bg: #111;
+  --warn-bg: #fff; --warn-ink: #111; --warn-border: 2px dashed #111;
+  --th-bg: #e7e4dc; --th-border: #111; --input-bg: #fff; --input-border: #111;
+  --splash-bg: #e9e7e1; --splash-ink: #111; --splash-sub: #333; --splash-w2: linear-gradient(#111, #111); --splash-shadow: none;
+  --balloon-bg: #fff; --balloon-ink: #111; --balloon-border: 2px solid #111;
+  --dot-on: #111; --dot-done: #777; --dot-off: #fff; --dot-border: 2px solid #111;
+  --flash-b: #f4f2ec;
+  color-scheme: light;
+}
+/* Classic 98: grey bevels on a teal desktop */
+:root[data-theme="classic"] {
+  --desk: #008080; --font: "MS Sans Serif", "Microsoft Sans Serif", Tahoma, Geneva, sans-serif; --font-head: "MS Sans Serif", Tahoma, sans-serif; --fs: 12px;
+  --win: #c0c0c0; --win-2: #c0c0c0; --ink: #000; --ink-2: #222; --ink-3: #555; --line: #808080; --line-2: #a0a0a0;
+  --row: #fff; --sel: #000080; --link: #0000ee; --head: #000; --accent: #000080; --ok: #006400; --bad: #a00000;
+  --win-border: 2px outset #dfdfdf; --win-radius: 0; --win-shadow: 2px 2px 0 #000;
+  --title-bg: linear-gradient(90deg, #000080, #1084d0); --title-ink: #fff; --title-shadow: none; --title-border: 0;
+  --tctl-bg: #c0c0c0; --tctl-border: 2px outset #fff; --tctl-ink: #000;
+  --bar-bg: #c0c0c0; --bar-line: #808080;
+  --btn-bg: #c0c0c0; --btn-ink: #000; --btn-border: 0; --btn-radius: 0; --btn-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf; --btn-hover: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+  --pri-bg: #c0c0c0; --pri-ink: #000; --pri-border: 1px solid #000; --pri-text-shadow: none; --go-bg: #c0c0c0; --go-ink: #000; --go-border: 1px solid #000;
+  --drop-bg: #fff; --drop-border: 1px dashed #000; --drop-over: #dfe8ff; --radius: 0;
+  --orb-bg: #c0c0c0; --orb-border: 2px outset #fff; --orb-ink: #000;
+  --ico-write: #000080; --ico-print: #808000; --ico-plain: #008000;
+  --choice-bg: #c0c0c0; --choice-border: 2px outset #fff; --choice-on-bg: #fff; --choice-on-border: 2px inset #808080; --choice-on-shadow: none;
+  --pill-bg: #c0c0c0; --pill-ink: #000; --pill-on-bg: #000080; --pill-on-ink: #fff; --pill-border: #000;
+  --prog-bg: #fff; --prog-border: 2px inset #808080; --prog-fill: repeating-linear-gradient(90deg, #000080 0 8px, transparent 8px 10px);
+  --ok-bg: #fff; --ok-ink: #000; --ok-border: 2px inset #808080; --check-bg: #008000;
+  --warn-bg: #ffffe1; --warn-ink: #000; --warn-border: 1px solid #000;
+  --th-bg: #c0c0c0; --th-border: #808080; --input-bg: #fff; --input-border: #808080;
+  --splash-bg: #008080; --splash-ink: #fff; --splash-sub: #e0ffff; --splash-w2: linear-gradient(#ffff00, #ffff00); --splash-shadow: 2px 2px 0 #000;
+  --balloon-bg: #ffffe1; --balloon-ink: #000; --balloon-border: 1px solid #000;
+  --dot-on: #000080; --dot-done: #008000; --dot-off: #fff; --dot-border: 1px solid #000;
+  --flash-b: #c0c0c0;
+  color-scheme: light;
+}
+/* Y2K: bubblegum gloss and sparkles */
+:root[data-theme="y2k"] {
+  --desk: radial-gradient(circle at 15% 20%, #fff 0 2px, transparent 3px) 0 0 / 90px 90px, radial-gradient(circle at 60% 70%, #fff 0 1.5px, transparent 2.5px) 0 0 / 70px 70px, linear-gradient(135deg, #ffc8f0, #d7b8ff 50%, #a8e6ff);
+  --font: "Trebuchet MS", Verdana, sans-serif; --font-head: "Trebuchet MS", sans-serif;
+  --win: #fffafe; --win-2: #fff0fb; --ink: #3a1240; --ink-2: #6a3a74; --ink-3: #a07aa8; --line: #e7a6e0; --line-2: #f5d4f0;
+  --row: #fff2fc; --sel: #ffd6f5; --link: #c0179d; --head: #b0108f; --accent: #e040c0; --ok: #1a9a6a; --bad: #d8204a;
+  --win-border: 2px solid #ff7fd6; --win-radius: 16px; --win-shadow: 0 0 0 4px rgba(255,255,255,.6), 0 16px 40px rgba(160, 40, 140, .35);
+  --title-bg: linear-gradient(180deg, #ffb3e8 0%, #ff6fd0 48%, #e040c0 52%, #ff8adc 100%); --title-ink: #fff; --title-shadow: 0 1px 2px rgba(120,0,90,.5); --title-border: 1px solid #c02aa0;
+  --tctl-bg: rgba(255,255,255,.3); --tctl-border: 1px solid rgba(255,255,255,.6);
+  --bar-bg: linear-gradient(180deg, #fff0fb, #ffd9f3); --bar-line: #f0a8de;
+  --btn-bg: linear-gradient(180deg, #fff 0%, #ffeefa 45%, #ffd6f3 50%, #ffeaf8 100%); --btn-ink: #8a0a6e; --btn-border: 1px solid #e78ad0; --btn-radius: 16px; --btn-hover: 0 0 0 3px rgba(255,120,210,.35);
+  --pri-bg: linear-gradient(180deg, #ffd0f2 0%, #ff7fd6 45%, #e040c0 50%, #ff70d2 100%); --pri-border: 1px solid #b0108f;
+  --go-bg: linear-gradient(180deg, #e6d2ff 0%, #b98bff 45%, #8a4fe8 50%, #a774ff 100%); --go-border: 1px solid #6a2fc8;
+  --drop-bg: linear-gradient(180deg, rgba(255,220,245,.6), rgba(255,255,255,.4)); --drop-border: 2px dashed #ff7fd6; --drop-over: #ffe0f6; --radius: 16px;
+  --orb-bg: radial-gradient(ellipse 60% 38% at 50% 22%, rgba(255,255,255,.95), rgba(255,255,255,0) 70%), radial-gradient(circle at 50% 80%, #ffc2ee, #e040c0 62%, #a01088 100%); --orb-border: 1px solid #a01088;
+  --ico-write: radial-gradient(ellipse 70% 40% at 50% 15%, rgba(255,255,255,.9), transparent 70%), linear-gradient(180deg, #ffb3e8, #e040c0);
+  --ico-print: radial-gradient(ellipse 70% 40% at 50% 15%, rgba(255,255,255,.9), transparent 70%), linear-gradient(180deg, #d2b8ff, #8a4fe8);
+  --ico-plain: radial-gradient(ellipse 70% 40% at 50% 15%, rgba(255,255,255,.9), transparent 70%), linear-gradient(180deg, #a8ecff, #2bb3e6);
+  --choice-bg: linear-gradient(180deg, #fff, #fff4fc); --choice-border: 1px solid #f5d4f0; --choice-on-bg: linear-gradient(180deg, #fff0fb, #ffd9f3); --choice-on-border: 1px solid #e040c0; --choice-on-shadow: 0 0 0 3px rgba(224,64,192,.25);
+  --pill-bg: linear-gradient(180deg, #fff, #ffe6f7); --pill-ink: #8a0a6e; --pill-on-bg: linear-gradient(180deg, #ff9ae0, #e040c0); --pill-border: #e78ad0;
+  --prog-bg: #fff; --prog-border: 1px solid #e78ad0; --prog-fill: repeating-linear-gradient(90deg, transparent 0 8px, #fff 8px 10px), linear-gradient(180deg, #ffd0f2, #ff5fc8 50%, #ff8adc);
+  --ok-bg: linear-gradient(180deg, #fff0fb, #ffe0f6); --ok-ink: #8a0a6e; --ok-border: 1px solid #ff9ae0;
+  --check-bg: radial-gradient(ellipse 60% 38% at 50% 22%, rgba(255,255,255,.95), transparent 70%), radial-gradient(circle at 50% 80%, #ffc2ee, #e040c0 70%);
+  --warn-bg: linear-gradient(180deg, #f3ecff, #e3d4ff); --warn-ink: #3a1270; --warn-border: 1px solid #b98bff;
+  --th-bg: linear-gradient(180deg, #fff, #ffe6f7); --th-border: #f0a8de; --input-border: #e78ad0;
+  --splash-bg: linear-gradient(135deg, #ffb3e8, #c99cff 50%, #8fdcff); --splash-sub: #fff; --splash-w2: linear-gradient(180deg, #fff 0%, #ffe6fa 45%, #ff7fd6 55%, #ffc2ee 100%); --splash-shadow: 0 2px 0 #b0108f, 0 4px 10px rgba(120,0,90,.35);
+  --balloon-bg: #fff0fb; --balloon-border: 1px solid #e040c0;
+  --dot-on: radial-gradient(circle at 35% 30%, #fff 0 15%, #ff9ae0 30%, #e040c0 75%); --dot-done: radial-gradient(circle at 35% 30%, #fff 0 15%, #c9a8ff 30%, #8a4fe8 75%); --dot-border: 1px solid #e78ad0;
+  --flash-b: #fffafe;
+  color-scheme: light;
+}
+/* Terminal: green phosphor on black */
+:root[data-theme="terminal"] {
+  --desk: repeating-linear-gradient(0deg, rgba(51,255,102,.04) 0 1px, transparent 1px 3px), #020502;
+  --font: Menlo, Monaco, "Courier New", monospace; --font-head: Menlo, Monaco, "Courier New", monospace; --fs: 12px;
+  --win: #050b06; --win-2: #08120a; --ink: #39ff6e; --ink-2: #2bd259; --ink-3: #1f9a43; --line: #1f6b33; --line-2: #123d1d;
+  --row: #071009; --sel: #0d2413; --link: #7dffa2; --head: #5bff88; --accent: #39ff6e; --ok: #39ff6e; --bad: #ff5555;
+  --win-border: 1px solid #39ff6e; --win-radius: 0; --win-shadow: 0 0 24px rgba(57,255,110,.25);
+  --title-bg: #050b06; --title-ink: #39ff6e; --title-shadow: 0 0 6px rgba(57,255,110,.6); --title-border: 1px solid #39ff6e;
+  --tctl-bg: transparent; --tctl-border: 1px solid #39ff6e; --tctl-ink: #39ff6e;
+  --bar-bg: #050b06; --bar-line: #1f6b33;
+  --btn-bg: transparent; --btn-ink: #39ff6e; --btn-border: 1px solid #39ff6e; --btn-radius: 0; --btn-shadow: none; --btn-hover: 0 0 10px rgba(57,255,110,.5);
+  --pri-bg: #39ff6e; --pri-ink: #021004; --pri-border: 1px solid #39ff6e; --pri-text-shadow: none; --go-bg: #39ff6e; --go-ink: #021004; --go-border: 1px solid #39ff6e;
+  --drop-bg: transparent; --drop-border: 1px dashed #39ff6e; --drop-over: #0d2413; --radius: 0;
+  --orb-bg: transparent; --orb-border: 1px solid #39ff6e; --orb-ink: #39ff6e;
+  --ico-write: transparent; --ico-print: transparent; --ico-plain: transparent;
+  --choice-bg: transparent; --choice-border: 1px solid #1f6b33; --choice-on-bg: #0d2413; --choice-on-border: 1px solid #39ff6e; --choice-on-shadow: 0 0 12px rgba(57,255,110,.3);
+  --pill-bg: transparent; --pill-ink: #39ff6e; --pill-on-bg: #39ff6e; --pill-on-ink: #021004; --pill-border: #39ff6e;
+  --prog-bg: #020502; --prog-border: 1px solid #39ff6e; --prog-fill: repeating-linear-gradient(90deg, #39ff6e 0 8px, transparent 8px 10px);
+  --ok-bg: transparent; --ok-ink: #39ff6e; --ok-border: 1px solid #39ff6e; --check-bg: transparent;
+  --warn-bg: transparent; --warn-ink: #ffd34d; --warn-border: 1px dashed #ffd34d;
+  --th-bg: #08120a; --th-border: #1f6b33; --input-bg: #020502; --input-border: #39ff6e;
+  --splash-bg: #020502; --splash-ink: #39ff6e; --splash-sub: #2bd259; --splash-w2: linear-gradient(#7dffa2, #7dffa2); --splash-shadow: 0 0 10px rgba(57,255,110,.7);
+  --balloon-bg: #050b06; --balloon-ink: #39ff6e; --balloon-border: 1px solid #39ff6e;
+  --dot-on: #39ff6e; --dot-done: #1f9a43; --dot-off: transparent; --dot-border: 1px solid #39ff6e;
+  --flash-a: #39ff6e; --flash-b: #020502; --ghost-blend: screen; --glow: 0 0 4px rgba(57,255,110,.45);
+  color-scheme: dark;
+}
+/* Handwritten text (any theme) */
+:root[data-font="hand"] { --font: "Bradley Hand", "Noteworthy", "Chalkboard SE", "Patrick Hand", "Segoe Print", "Comic Sans MS", cursive; --font-head: var(--font); --fs: 14px; }
+
+/* ============================ layout ============================ */
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body { margin: 0; overflow: hidden; color: var(--ink); background: var(--desk); font: var(--fs)/1.5 var(--font); user-select: none; -webkit-user-select: none; cursor: default;
+  display: flex; align-items: stretch; justify-content: center; padding: 16px; text-shadow: var(--glow); }
+button, input, select { font: inherit; color: inherit; }
+a, .link { color: var(--link); text-decoration: underline; cursor: pointer; background: none; border: 0; padding: 0; font: inherit; }
+a:hover, .link:hover { filter: brightness(1.3); }
+h1, h2, legend, .t, .choice b, .done-banner b, .connect b.t { font-family: var(--font-head); }
+
+.window { flex: 1; max-width: 1100px; display: flex; flex-direction: column; background: var(--win); border: var(--win-border); border-radius: var(--win-radius); box-shadow: var(--win-shadow); overflow: hidden; }
+
+/* top row: name, gear, quick settings */
+.titlebar { flex: none; height: 40px; display: flex; align-items: center; gap: 8px; padding: 0 10px 0 12px; background: var(--title-bg); color: var(--title-ink); border-bottom: var(--title-border); text-shadow: var(--title-shadow); }
+.titlebar img { width: 22px; height: 22px; image-rendering: pixelated; }
+.titlebar .t { font-weight: bold; font-size: 15px; letter-spacing: .2px; margin-right: 6px; }
+.titlebar .grow { flex: 1; }
+.tctl { height: 26px; display: inline-flex; align-items: center; gap: 5px; padding: 0 8px; border-radius: 4px; border: var(--tctl-border); background: var(--tctl-bg); color: var(--tctl-ink); font-size: 11.5px; cursor: pointer; text-shadow: inherit; white-space: nowrap; }
+.tctl select { border: 0; background: transparent; color: inherit; font-size: 11.5px; padding: 0 2px; cursor: pointer; outline: none; }
+.tctl select option { color: #000; background: #fff; }
+.tctl.gear { font-size: 15px; padding: 0 7px; }
+.tctl:hover { filter: brightness(1.12); }
+
+.main { flex: 1; min-height: 0; display: flex; flex-direction: column; position: relative; background: var(--win); }
+.page { flex: 1; min-height: 0; overflow-y: auto; padding: 26px 36px 18px; animation: pageIn .35s ease; }
+.page > .inner { max-width: 920px; margin: 0 auto; }
+@keyframes pageIn { from { opacity: 0; transform: translateX(24px); } }
+.page.back { animation-name: pageBack; } @keyframes pageBack { from { opacity: 0; transform: translateX(-24px); } }
+.page.instant { animation: none; }
+.page h1 { margin: 0; font-size: 24px; color: var(--head); letter-spacing: -.2px; }
+:root[data-font="hand"] .page h1 { font-size: 30px; }
+.page .lead { margin: 4px 0 18px; color: var(--ink-2); }
+
+/* bottom bar: back, three dots, next */
+.bar { flex: none; position: relative; display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: var(--bar-bg); border-top: 1px solid var(--bar-line); }
+.bar .grow { flex: 1; }
+.dots { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; gap: 10px; }
+.dots i { width: 11px; height: 11px; border-radius: 50%; background: var(--dot-off); border: var(--dot-border); transition: transform .2s; }
+.dots i.done { background: var(--dot-done); cursor: pointer; }
+.dots i.on { background: var(--dot-on); transform: scale(1.3); }
+:root[data-theme="classic"] .dots i, :root[data-theme="terminal"] .dots i { border-radius: 0; }
+
+/* buttons */
+.btn { position: relative; min-width: 92px; height: 28px; padding: 0 16px; border-radius: var(--btn-radius); cursor: pointer; font-weight: bold; font-size: 12px; white-space: nowrap;
+  color: var(--btn-ink); border: var(--btn-border); background: var(--btn-bg); box-shadow: var(--btn-shadow); display: inline-flex; align-items: center; justify-content: center; gap: 6px; text-shadow: none; }
+:root[data-font="hand"] .btn { font-size: 14px; }
+.btn:hover { box-shadow: var(--btn-hover); }
+.btn:active { filter: brightness(.94); }
+.btn.primary { color: var(--pri-ink); background: var(--pri-bg); border: var(--pri-border); text-shadow: var(--pri-text-shadow); }
+.btn.go { color: var(--go-ink); background: var(--go-bg); border: var(--go-border); text-shadow: var(--pri-text-shadow); }
+.btn.big { height: 34px; min-width: 130px; font-size: 13px; }
+.btn.small { height: 22px; min-width: 0; padding: 0 10px; font-size: 11px; }
+.btn[disabled] { opacity: .45; cursor: default; box-shadow: none; filter: grayscale(.6); }
+:root[data-theme="classic"] .btn.primary, :root[data-theme="classic"] .btn.go { box-shadow: 0 0 0 1px #000, inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px #808080, inset 2px 2px #dfdfdf; }
+
+/* step 1 */
+.drop { border: var(--drop-border); border-radius: var(--radius); padding: 26px; display: flex; align-items: center; gap: 22px; cursor: pointer; background: var(--drop-bg); transition: background .15s; }
+.drop.over { background: var(--drop-over); border-style: solid; }
+.orb { width: 80px; height: 80px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--orb-bg); border: var(--orb-border); color: var(--orb-ink); transition: transform .25s; }
+:root[data-theme="classic"] .orb, :root[data-theme="terminal"] .orb { border-radius: 0; }
+.drop:hover .orb { transform: scale(1.06); }
+.orb svg { width: 38px; height: 38px; }
+.drop h2 { margin: 0 0 4px; font-size: 19px; color: var(--head); }
+.drop p { margin: 0; color: var(--ink-2); }
+.drop .kinds { margin-top: 6px; color: var(--ink-3); font-size: 11px; }
+.drop.small { padding: 12px 16px; gap: 14px; } .drop.small .orb { width: 42px; height: 42px; } .drop.small .orb svg { width: 20px; height: 20px; } .drop.small h2 { font-size: 15px; } .drop.small .kinds { display: none; }
+.uploading { margin-top: 10px; }
+.hint { margin-top: 12px; padding: 8px 12px; border: var(--warn-border); background: var(--warn-bg); color: var(--warn-ink); border-radius: 6px; font-size: 12px; }
+
+/* list view */
+.listview { margin-top: 16px; border: 1px solid var(--line); background: var(--win); }
+:root[data-theme="classic"] .listview { border: 2px inset #808080; background: #fff; }
+.listview table { width: 100%; border-collapse: collapse; }
+.listview th { text-align: left; font-weight: normal; padding: 4px 8px; border-right: 1px solid var(--th-border); border-bottom: 1px solid var(--th-border); background: var(--th-bg); font-size: 11.5px; color: var(--ink); }
+:root[data-theme="classic"] .listview th { box-shadow: inset -1px -1px #808080, inset 1px 1px #fff; }
+.listview td { padding: 5px 8px; border-bottom: 1px solid var(--line-2); vertical-align: middle; }
+:root[data-theme="classic"] .listview td { color: #000; }
+.listview tr:nth-child(even) td { background: var(--row); }
+.nm { display: flex; align-items: center; gap: 8px; font-weight: bold; }
+.nm span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 420px; }
+.err, .send-err { color: var(--bad); font-size: 11.5px; }
+.num { color: var(--ink-2); white-space: nowrap; }
+.ficon { width: 16px; height: 20px; flex: none; position: relative; border: 1px solid var(--ink-3); background: #fff; }
+.ficon::after { content: ""; position: absolute; left: 2px; right: 2px; bottom: 2px; height: 5px; background: var(--k); }
+:root[data-theme="eink"] .ficon::after, :root[data-theme="terminal"] .ficon::after { background: var(--ink); }
+:root[data-theme="terminal"] .ficon { background: transparent; border-color: var(--ink); }
+.empty-row td { text-align: center; color: var(--ink-3); padding: 18px; }
+.act { text-align: right; white-space: nowrap; }
+.state.busy { color: #b06a00; } :root[data-theme="terminal"] .state.busy { color: #ffd34d; }
+.state.bad { color: var(--bad); } .state.ok, .sent { color: var(--ok); font-weight: bold; }
+.spin { display: inline-block; width: 10px; height: 10px; border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -1px; margin-right: 4px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* step 2 */
+fieldset { border: 1px solid var(--line); border-radius: 5px; padding: 12px 14px 14px; margin: 0 0 14px; }
+:root[data-theme="classic"] fieldset { border: 2px groove #fff; border-radius: 0; }
+legend { color: var(--head); font-weight: bold; padding: 0 5px; }
+.split { display: grid; grid-template-columns: 1fr 190px; gap: 16px; align-items: start; }
+.choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.choice { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; padding: 14px 10px 12px; border-radius: var(--radius); border: var(--choice-border); cursor: pointer; background: var(--choice-bg); }
+.choice.on { border: var(--choice-on-border); box-shadow: var(--choice-on-shadow); background: var(--choice-on-bg); }
+.choice .ico { width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center; color: #fff; }
+.ico.write { background: var(--ico-write); } .ico.print { background: var(--ico-print); } .ico.plain { background: var(--ico-plain); }
+:root[data-theme="terminal"] .choice .ico { color: var(--ink); border: 1px solid var(--ink); }
+:root[data-theme="classic"] .choice .ico { border-radius: 0; }
+.choice .ico svg { width: 28px; height: 28px; }
+.choice b { font-size: 13.5px; }
+.choice small { color: var(--ink-2); font-size: 11px; line-height: 1.35; }
+.radio { width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--ink-3); background: var(--input-bg); display: grid; place-items: center; }
+.choice.on .radio::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.opt { display: flex; align-items: center; gap: 10px; padding: 5px 0; }
+.opt label { display: flex; align-items: center; gap: 7px; cursor: pointer; }
+.opt .lbl { width: 130px; color: var(--ink-2); flex: none; }
+input[type=checkbox] { width: 13px; height: 13px; accent-color: var(--accent); margin: 0; }
+select.field, .txt { height: 22px; border: 1px solid var(--input-border); background: var(--input-bg); padding: 0 5px; border-radius: 0; color: var(--ink); }
+.txt { width: 200px; -webkit-user-select: text; user-select: text; }
+.pills { display: inline-flex; border: 1px solid var(--pill-border); border-radius: 3px; overflow: hidden; flex-wrap: wrap; }
+.pills button { border: 0; border-right: 1px solid var(--pill-border); padding: 2px 10px; background: var(--pill-bg); color: var(--pill-ink); cursor: pointer; font-size: 11.5px; }
+.pills button:last-child { border-right: 0; }
+.pills button.on { background: var(--pill-on-bg); color: var(--pill-on-ink); font-weight: bold; }
+.preview { border: 1px solid var(--line); padding: 10px; text-align: center; background: var(--win-2); }
+.preview .ttl { font-size: 10.5px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 6px; }
+.preview .cap { font-size: 11px; color: var(--ink-2); margin-top: 8px; line-height: 1.4; }
+.stage { height: 150px; display: grid; place-items: center; }
+.pg { position: relative; background: #fff; border: 1px solid #9aa6b5; box-shadow: 2px 3px 0 rgba(0,0,0,.12); transition: width .3s, height .3s; overflow: hidden; }
+.pg.stack { box-shadow: 3px 3px 0 -1px #fff, 3px 3px 0 0 #9aa6b5, 6px 6px 0 -1px #fff, 6px 6px 0 0 #9aa6b5; overflow: visible; }
+.pg .sl { position: absolute; background: linear-gradient(135deg, #3b7fe0, #64b8ff); overflow: hidden; }
+.pg .sl::after { content: ""; position: absolute; left: 12%; top: 22%; width: 50%; height: 9%; background: rgba(255,255,255,.9); box-shadow: 0 6px 0 rgba(255,255,255,.55); }
+:root[data-theme="eink"] .pg .sl, :root[data-theme="terminal"] .pg .sl { filter: grayscale(1); }
+.pg .doc { position: absolute; background: repeating-linear-gradient(180deg, #9aa0ad 0 2px, transparent 2px 7px); opacity: .55; }
+.pg .notes { position: absolute; background: repeating-linear-gradient(180deg, #b3b7c1 0 1.5px, transparent 1.5px 6px); opacity: .75; }
+.pg .area { position: absolute; }
+.area.lined { background: repeating-linear-gradient(180deg, transparent 0 6px, #c7cdd8 6px 7px); }
+.area.grid { background: repeating-linear-gradient(180deg, transparent 0 5px, #ccd2dc 5px 5.6px), repeating-linear-gradient(90deg, transparent 0 5px, #ccd2dc 5px 5.6px); }
+.area.dots { background: radial-gradient(circle, #9ba1ad .8px, transparent 1.1px) 0 0 / 6px 6px; }
+.area.blank { outline: 1px dashed #d4d8e0; outline-offset: -1px; }
+.pg .pno { position: absolute; bottom: 1px; left: 0; right: 0; text-align: center; font-size: 5.5px; color: #888; }
+.more-toggle { display: inline-flex; align-items: center; gap: 6px; margin: 2px 0 10px; }
+.more-toggle .tri { display: inline-block; transition: transform .15s; font-size: 9px; }
+.more-toggle.open .tri { transform: rotate(90deg); }
+
+/* step 3 */
+.xp-progress { height: 18px; border: var(--prog-border); border-radius: 3px; padding: 2px; background: var(--prog-bg); margin: 6px 0 4px; overflow: hidden; }
+.xp-progress i { display: block; height: 100%; width: 0; transition: width .4s; background: var(--prog-fill); }
+.xp-progress.busy i { animation: blocks 1s steps(8) infinite; }
+@keyframes blocks { from { background-position: 0 0; } to { background-position: 80px 0; } }
+.status-line { display: flex; justify-content: space-between; color: var(--ink-2); font-size: 11.5px; }
+.done-banner { display: flex; align-items: center; gap: 14px; margin: 14px 0 6px; padding: 12px 14px; border: var(--ok-border); border-radius: 6px; background: var(--ok-bg); color: var(--ok-ink); }
+.done-banner.fresh { animation: pageIn .4s ease; }
+.done-banner .check { width: 38px; height: 38px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--check-bg); }
+:root[data-theme="terminal"] .done-banner .check { border: 1px solid var(--ink); }
+.done-banner .check svg { width: 22px; height: 22px; }
+.done-banner b { font-size: 15px; display: block; }
+.connect { margin: 14px 0 6px; padding: 14px 16px; border: var(--warn-border); border-radius: 6px; background: var(--warn-bg); color: var(--warn-ink); }
+.connect b.t { display: block; font-size: 14.5px; margin-bottom: 6px; }
+.connect ol { margin: 6px 0 8px; padding-left: 20px; }
+.connect li { margin: 5px 0; }
+.connect .code { width: 150px; height: 26px; font: bold 15px/26px Menlo, "Courier New", monospace; letter-spacing: 3px; text-align: center; margin-right: 6px; }
+.connect small { opacity: .85; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; background: var(--bad); }
+.dot.on { background: var(--ok); }
+
+/* dialog + balloon */
+.modal-bg { position: fixed; inset: 0; background: rgba(0, 20, 60, .3); display: none; align-items: center; justify-content: center; z-index: 50; }
+.modal-bg.on { display: flex; }
+.dialog { display: flex; flex-direction: column; max-height: calc(100vh - 30px); width: 460px; max-width: calc(100vw - 30px); background: var(--win); border: var(--win-border); border-radius: var(--win-radius); overflow: hidden; box-shadow: 0 14px 40px rgba(0,0,0,.4); }
+.dialog .titlebar { height: 32px; }
+.xbtn { width: 22px; height: 20px; display: grid; place-items: center; cursor: pointer; border: var(--tctl-border); background: var(--tctl-bg); color: var(--tctl-ink); border-radius: 3px; font-weight: bold; }
+.dialog .inner { padding: 14px 16px; overflow-y: auto; background: var(--win-2); }
+.path { font-size: 11px; color: var(--ink-2); border: 1px solid var(--input-border); background: var(--input-bg); padding: 3px 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; direction: rtl; text-align: left; margin-bottom: 8px; }
+.engines span { display: inline-block; margin: 2px 6px 2px 0; font-size: 11px; color: var(--ink-3); }
+.engines span.yes { color: var(--ok); font-weight: bold; }
+.about { text-align: center; color: var(--ink-3); font-size: 11.5px; margin: 4px 0 10px; }
+.dialog .foot { display: flex; justify-content: flex-end; gap: 8px; }
+.balloon { position: fixed; right: 26px; bottom: 70px; max-width: 320px; padding: 9px 12px; background: var(--balloon-bg); color: var(--balloon-ink); border: var(--balloon-border); border-radius: 7px; font-size: 11.5px; z-index: 60;
+  box-shadow: 2px 3px 6px rgba(0,0,0,.3); opacity: 0; transform: translateY(8px); transition: opacity .2s, transform .2s; pointer-events: none; }
+.balloon.on { opacity: 1; transform: none; }
+.balloon.bad { border-color: var(--bad); color: var(--bad); }
+
+/* e-ink ghosting page turns */
+.ghost { position: absolute; left: 0; right: 0; top: 0; bottom: 49px; overflow: hidden; pointer-events: none; z-index: 4; filter: grayscale(1) blur(.4px); mix-blend-mode: var(--ghost-blend); animation: ghostFade 1.9s ease-out forwards; }
+.ghost .page { animation: none; height: 100%; }
+@keyframes ghostFade { 0% { opacity: .5; } 12% { opacity: .2; } 100% { opacity: 0; } }
+.flash { position: absolute; left: 0; right: 0; top: 0; bottom: 49px; pointer-events: none; z-index: 5; animation: inkFlash .42s steps(1, end) forwards; }
+@keyframes inkFlash { 0% { background: var(--flash-a); } 30% { background: var(--flash-b); } 55% { background: var(--flash-a); opacity: .25; } 75% { background: var(--flash-b); opacity: .7; } 100% { opacity: 0; } }
+
+/* splash */
+.splash { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; cursor: pointer; background: var(--splash-bg); transition: opacity .5s; }
+.splash.out { opacity: 0; pointer-events: none; }
+.splash.inkout { animation: splashInk .6s steps(1, end) forwards; }
+@keyframes splashInk { 0% { filter: invert(1); } 25% { filter: none; } 50% { filter: invert(1); opacity: .6; } 75% { filter: none; opacity: .25; } 100% { opacity: 0; } }
+.splash-in { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.splash img { width: 96px; height: 96px; image-rendering: pixelated; animation: pop .5s cubic-bezier(.2,.9,.3,1.4) both; }
+@keyframes pop { from { transform: scale(.4); opacity: 0; } }
+.wordart { font: bold 44px var(--font-head); letter-spacing: -1px; animation: pop .5s .12s cubic-bezier(.2,.9,.3,1.4) both; }
+:root[data-theme="light"] .wordart, :root[data-theme="system"] .wordart, :root[data-theme="dark"] .wordart, :root[data-theme="y2k"] .wordart { font-style: italic; }
+.wordart .w1 { color: var(--splash-ink); text-shadow: var(--splash-shadow); }
+.wordart .w2 { background: var(--splash-w2); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 2px rgba(0,0,0,.25)); }
+:root[data-theme="eink"] .wordart .w2 { text-decoration: underline 3px #111; text-underline-offset: 6px; }
+.loading { width: 260px; color: var(--splash-sub); font-size: 11px; text-align: center; }
+.loading .xp-progress { position: relative; }
+.loading .xp-progress b { position: absolute; top: 2px; bottom: 2px; width: 34px; left: -40px; animation: slideBlocks 1.3s linear infinite; background: var(--prog-fill); }
+@keyframes slideBlocks { to { left: 100%; } }
+@media (prefers-reduced-motion: reduce) { .splash *, .page, .ghost, .flash { animation: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="splash" id="splash" data-on="{{SPLASH}}" title="Click to skip">
+  <div class="splash-in">
+    <img src="{{ICON}}" alt="">
+    <div class="wordart"><span class="w1">canteven</span><span class="w2">ReMark</span></div>
+    <div class="loading">Loading, please wait…<div class="xp-progress"><b></b></div></div>
+  </div>
+</div>
+
+<div class="window">
+  <div class="titlebar">
+    <img src="{{ICON}}" alt="">
+    <span class="t">cantevenReMark</span>
+    <button class="tctl gear" id="openSettings" title="Options">⚙</button>
+    <div class="grow"></div>
+    <label class="tctl" title="Where finished PDFs go">Send to
+      <select id="qSend"><option value="cloud">reMarkable (Wi-Fi)</option><option value="usb">reMarkable (USB)</option><option value="mac">this Mac only</option></select></label>
+    <label class="tctl" title="Theme">Theme
+      <select id="qTheme"><option value="system">Auto</option><option value="light">Day</option><option value="dark">Night</option><option value="eink">E-ink</option><option value="classic">Classic 98</option><option value="y2k">Y2K</option><option value="terminal">Terminal</option></select></label>
+    <button class="tctl" id="qFont" title="Typed or handwritten text">Aa</button>
+    <button class="tctl" id="openDl" title="Open your Downloads folder">📁</button>
+  </div>
+
+  <div class="main" id="main">
+    <!-- STEP 1 -->
+    <section class="page" id="p1"><div class="inner">
+      <h1>Add your files</h1>
+      <p class="lead">Drop in slides, documents, spreadsheets, pictures or PDFs — or a whole folder.</p>
+      <div class="drop" id="drop" tabindex="0" role="button">
+        <div class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+        <div><h2>Drag your files here</h2><p>…or <a id="pickLink">click to browse</a> &nbsp;·&nbsp; <a id="pickFolder">add a folder</a></p>
+        <div class="kinds">PDF · PowerPoint · Keynote · Word · Pages · Excel · Numbers · JPG · PNG · HEIC</div></div>
+      </div>
+      <div class="uploading" id="uploading" hidden><div class="xp-progress busy"><i id="uploadBar"></i></div></div>
+      <div class="hint" id="pdfHint" hidden>These are already PDFs, so there's nothing to convert — press <b id="pdfHintBtn">Send</b> and they go straight to your reMarkable. Want lines or page numbers added? Press <b>Style…</b> first.</div>
+      <div class="listview"><table>
+        <thead><tr><th style="width:55%">Name</th><th>Type</th><th>Size</th><th style="width:60px"></th></tr></thead>
+        <tbody id="files"></tbody>
+      </table></div>
+      <input type="file" id="picker" multiple hidden>
+      <input type="file" id="folderPicker" webkitdirectory multiple hidden>
+    </div></section>
+
+    <!-- STEP 2 -->
+    <section class="page" id="p2" hidden><div class="inner">
+      <h1>Pick a style</h1>
+      <p class="lead">What do you want to do with these? You can fine-tune below.</p>
+      <div class="split">
+        <div>
+          <fieldset><legend>I want to…</legend>
+            <div class="choices" id="choices">
+              <div class="choice" data-p="write"><div class="ico write"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div><b>Write on them</b><small>Lined space under each slide, shaped for a reMarkable</small><span class="radio"></span></div>
+              <div class="choice" data-p="print"><div class="ico print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg></div><b>Print them</b><small>3 slides per page, numbered</small><span class="radio"></span></div>
+              <div class="choice" data-p="plain"><div class="ico plain"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg></div><b>Keep them as they are</b><small>Same pages as the original</small><span class="radio"></span></div>
+            </div>
+          </fieldset>
+          <button class="link more-toggle" id="moreToggle"><span class="tri">▶</span> More options</button>
+          <fieldset id="more" hidden><legend>More options</legend>
+            <div class="opt" id="paperOpt"><span class="lbl">Writing space</span><div class="pills" id="paperPills"><button data-v="lined">Lines</button><button data-v="grid">Grid</button><button data-v="dots">Dots</button><button data-v="blank">Blank</button></div></div>
+            <div class="opt" id="layoutOpt"><span class="lbl">Slides</span><select class="field" id="layout"><option value="slides">1 per page</option><option value="notes">With speaker notes</option><option value="handout2">2 per page</option><option value="handout3">3 per page</option><option value="handout4">4 per page</option><option value="handout6">6 per page</option></select></div>
+            <div class="opt"><span class="lbl"></span><label><input type="checkbox" id="pageNumbers"> Add page numbers</label></div>
+            <div class="opt"><span class="lbl"></span><label><input type="checkbox" id="compress"> Make files smaller</label></div>
+            <div class="opt"><span class="lbl"></span><label><input type="checkbox" id="merge"> Also combine everything into one PDF</label></div>
+            <div class="opt"><span class="lbl">Put before names</span><input class="txt" id="prefix" type="text" placeholder="e.g. BIO1001 – " maxlength="60" spellcheck="false"></div>
+          </fieldset>
+        </div>
+        <div class="preview"><div class="ttl">Preview</div><div class="stage"><div class="pg" id="pv"></div></div><div class="cap" id="pvText"></div></div>
+      </div>
+    </div></section>
+
+    <!-- STEP 3 -->
+    <section class="page" id="p3" hidden><div class="inner">
+      <h1 id="h3">Making your PDFs…</h1>
+      <p class="lead" id="lead3"></p>
+      <div class="status-line"><span id="statusText">Starting…</span><span id="statusCount"></span></div>
+      <div class="xp-progress busy" id="prog"><i id="progBar"></i></div>
+      <div id="connectBox"></div>
+      <div id="doneBanner"></div>
+      <div class="listview"><table>
+        <thead><tr><th style="width:46%">File</th><th>Pages</th><th>Size</th><th>Status</th><th style="width:200px"></th></tr></thead>
+        <tbody id="outRows"></tbody>
+      </table></div>
+    </div></section>
+
+    <div class="bar">
+      <button class="btn" id="back">&lt; Back</button>
+      <div class="dots" id="dots"><i data-s="1"></i><i data-s="2"></i><i data-s="3"></i></div>
+      <div class="grow"></div>
+      <button class="btn" id="alt" hidden>Style…</button>
+      <button class="btn primary" id="next">Next &gt;</button>
+    </div>
+  </div>
+</div>
+
+<!-- Options -->
+<div class="modal-bg" id="modal">
+  <div class="dialog">
+    <div class="titlebar"><span class="t">Options</span><div class="grow"></div><div class="xbtn" id="closeModal">×</div></div>
+    <div class="inner">
+      <fieldset><legend>reMarkable</legend>
+        <div class="opt"><span class="lbl">Send by</span><div class="pills" id="sendPills"><button data-v="cloud">Wi-Fi</button><button data-v="usb">USB cable</button><button data-v="mac">Don't send</button></div></div>
+        <div class="opt" id="rmStatusRow"><span class="lbl">Status</span><span id="rmStatus"></span></div>
+        <div class="opt"><label><input type="checkbox" id="autoSend"> Send each PDF automatically when it's ready</label></div>
+      </fieldset>
+      <fieldset><legend>Quick use</legend>
+        <div class="opt"><label><input type="checkbox" id="skipStyle"> Skip the style step — always use my saved style</label></div>
+        <div class="opt"><label><input type="checkbox" id="remember"> Save the style I pick each time</label></div>
+      </fieldset>
+      <fieldset><legend>Saving to this Mac</legend>
+        <div class="path" id="dlPath"></div>
+        <div class="opt"><button class="btn small" id="chooseDl">Change…</button><button class="btn small" id="openDl2">Open folder</button></div>
+        <div class="opt"><label><input type="checkbox" id="autoSave"> Also save every PDF to this folder</label></div>
+      </fieldset>
+      <fieldset><legend>Look &amp; feel</legend>
+        <div class="opt"><span class="lbl">Theme</span><div class="pills" id="themePills"><button data-v="system">Auto</button><button data-v="light">Day</button><button data-v="dark">Night</button><button data-v="eink">E-ink</button><button data-v="classic">Classic 98</button><button data-v="y2k">Y2K</button><button data-v="terminal">Terminal</button></div></div>
+        <div class="opt"><span class="lbl">Writing</span><div class="pills" id="fontPills"><button data-v="normal">Typed</button><button data-v="hand">Handwritten</button></div></div>
+        <div class="opt"><span class="lbl">Page turns</span><div class="pills" id="motionPills"><button data-v="ghost">E-ink ghosting</button><button data-v="smooth">Smooth slide</button></div></div>
+        <div class="opt"><label><input type="checkbox" id="splashOn"> Show the loading screen</label></div>
+      </fieldset>
+      <fieldset><legend>Converters on this Mac</legend><div class="engines" id="engines"></div></fieldset>
+      <div class="about">cantevenReMark v{{VERSION}} · converted files are deleted when you quit — only these settings are kept.</div>
+      <div class="foot"><button class="btn" id="quit">Quit</button><button class="btn primary" id="okModal">OK</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="balloon" id="balloon"></div>
+
+<script>
+(() => {
+  const TOKEN = "{{TOKEN}}";
+  const $ = (id) => document.getElementById(id);
+  const root = document.documentElement.dataset;
+  const K = { Keynote: "#2b7bf3", Pages: "#f08a24", Numbers: "#21a453", Image: "#8b5cf6", PDF: "#e5483a", LibreOffice: "#6b7280" };
+  const TYPE = { Keynote: "Slides", Pages: "Document", Numbers: "Spreadsheet", Image: "Picture", PDF: "PDF", LibreOffice: "Document" };
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const size = (b) => !b ? "" : b < 1024 ? b + " B" : b < 1048576 ? Math.round(b / 1024) + " KB" : (b / 1048576).toFixed(1) + " MB";
+  const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
+  const icon = (kind) => `<span class="ficon" style="--k:${K[kind] || "#6b7280"}"></span>`;
+  const CHECK = `<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>`;
+
+  let S = { staged: [], jobs: [], batch: "", settings: { defaults: {} }, engines: {}, native: false, downloadDir: "", remarkable: {} };
+  let step = 1, opts = null, optsDirty = false, uploading = false, timer = null, batch = "", converting = false;
+
+  async function api(path, body) {
+    const r = await fetch(path, { method: "POST", headers: { "X-CER-Token": TOKEN, "Content-Type": "application/json" }, body: body === undefined ? undefined : JSON.stringify(body) });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.error || r.statusText);
+    return d;
+  }
+  let bt;
+  function balloon(msg, bad) { const b = $("balloon"); b.textContent = msg; b.className = "balloon on" + (bad ? " bad" : ""); clearTimeout(bt); bt = setTimeout(() => b.classList.remove("on"), bad ? 4500 : 2600); }
+
+  // ---------- splash ----------
+  (() => {
+    const el = $("splash");
+    if (el.dataset.on !== "1") { el.remove(); return; }
+    const done = () => {
+      if (el.dataset.closing) return; el.dataset.closing = "1";
+      if (root.motion !== "smooth") { el.classList.add("inkout"); setTimeout(() => el.remove(), 650); }
+      else { el.classList.add("out"); setTimeout(() => el.remove(), 550); }
+    };
+    el.addEventListener("click", done);
+    setTimeout(done, 2000);
+  })();
+
+  // ---------- helpers ----------
+  const good = () => S.staged.filter((f) => !f.error);
+  const allPDF = () => good().length > 0 && good().every((f) => f.kind === "PDF");
+  const method = () => S.settings.sendTo || "cloud";
+  const rmReady = () => method() === "usb" ? !!S.remarkable.usb : method() === "cloud" ? !!S.remarkable.connected : false;
+  const willSend = () => method() !== "mac" && rmReady();
+  const dlName = () => (S.downloadDir || "Downloads").split("/").filter(Boolean).pop() || "Downloads";
+
+  // ---------- navigation ----------
+  function go(n) {
+    const back = n < step, ghost = root.motion !== "smooth";
+    const oldPage = $("p" + step);
+    if (ghost && n !== step && oldPage && !oldPage.hidden) {
+      const main = $("main");
+      const g = document.createElement("div"); g.className = "ghost";
+      const c = oldPage.cloneNode(true); c.removeAttribute("id"); c.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
+      g.appendChild(c); main.appendChild(g); setTimeout(() => g.remove(), 2000);
+      const f = document.createElement("div"); f.className = "flash"; main.appendChild(f); setTimeout(() => f.remove(), 500);
+    }
+    step = n;
+    for (const i of [1, 2, 3]) {
+      const p = $("p" + i);
+      p.hidden = i !== n;
+      if (i === n) { p.classList.toggle("back", back); p.classList.toggle("instant", ghost); p.style.animation = "none"; void p.offsetWidth; p.style.animation = ""; }
+    }
+    render();
+  }
+  async function convert(o, save) {
+    if (converting) return;
+    converting = true; $("next").disabled = true;
+    try { const r = await api("/api/convert", { ...o, send: willSend(), save }); batch = r.batch; optsDirty = false; go(3); }
+    catch (e) { balloon(e.message, true); }
+    converting = false; poll();
+  }
+  const plainOpts = () => ({ ...opts, layout: "slides", noteSpace: "none", pageNumbers: false, compress: false, merge: false });
+  const sendLabel = (verb) => willSend() ? `${verb} &amp; send ▸` : method() === "mac" ? `${verb} ▸` : `${verb} ▸`;
+
+  function renderNav() {
+    const n = good().length, back = $("back"), next = $("next"), alt = $("alt");
+    for (const d of $("dots").children) { const s = +d.dataset.s; d.className = s === step ? "on" : s < step ? "done" : ""; d.title = ["Add files", "Pick a style", "Send"][s - 1]; }
+    alt.hidden = true; back.hidden = step === 1 || step === 3; back.disabled = false;
+    $("pdfHint").hidden = !(step === 1 && allPDF() && method() !== "mac" && !S.settings.skipStyle);
+    if (step === 1) {
+      next.disabled = !n;
+      if (n && allPDF() && !S.settings.skipStyle) {
+        alt.hidden = false;
+        next.className = "btn go"; next.innerHTML = method() === "mac" ? "Done ▸" : "Send ▸";
+        $("pdfHintBtn").textContent = "Send";
+      } else if (n && S.settings.skipStyle) {
+        next.className = "btn go"; next.innerHTML = allPDF() ? (method() === "mac" ? "Done ▸" : "Send ▸") : sendLabel("Make");
+      } else { next.className = "btn primary"; next.innerHTML = "Next &gt;"; }
+    } else if (step === 2) {
+      next.disabled = !n; next.className = "btn go big";
+      next.innerHTML = willSend() ? `Make ${plural(n, "PDF")} &amp; send ▸` : `Make ${plural(n, "PDF")} ▸`;
+    } else {
+      const busy = batchJobs().some((j) => j.status === "queued" || j.status === "converting");
+      next.className = "btn"; next.disabled = busy; next.innerHTML = "Start over";
+    }
+  }
+  $("back").addEventListener("click", () => { if (step > 1) go(step - 1); });
+  $("alt").addEventListener("click", () => go(2));
+  $("next").addEventListener("click", async () => {
+    if (step === 1) {
+      if (S.settings.skipStyle) return convert(allPDF() ? plainOpts() : opts, false);
+      if (allPDF()) return convert(plainOpts(), false);
+      return go(2);
+    }
+    if (step === 2) return convert(opts, true);
+    await api("/api/unstage-all").catch(() => {});
+    batch = ""; go(1); poll();
+  });
+  $("dots").addEventListener("click", (e) => { const d = e.target.closest("i.done"); if (d && step !== 3) go(+d.dataset.s); });
+
+  // ---------- step 1 ----------
+  function renderFiles() {
+    const st = S.staged;
+    $("drop").classList.toggle("small", st.length > 0);
+    const sig = JSON.stringify(st.map((f) => f.id));
+    if ($("files").dataset.sig === sig) return;
+    $("files").dataset.sig = sig;
+    $("files").innerHTML = st.length ? st.map((f) => `<tr data-id="${f.id}">
+      <td><div class="nm">${icon(f.kind)}<span title="${esc(f.name)}">${esc(f.name)}</span></div>${f.error ? `<div class="err">⚠ ${esc(f.error)}</div>` : ""}</td>
+      <td class="num">${f.error ? "—" : TYPE[f.kind] || f.kind}</td><td class="num">${size(f.size)}</td>
+      <td class="act"><a data-act="unstage">Remove</a></td></tr>`).join("")
+      : `<tr class="empty-row"><td colspan="4">No files yet — they'll be listed here.</td></tr>`;
+  }
+  function upload(files) {
+    files = [...files].filter((f) => f && (f.size > 0 || f.type));
+    if (!files.length) return;
+    if (step !== 1) { batch = ""; go(1); }
+    const fd = new FormData();
+    for (const f of files) fd.append("files", f, f.name);
+    const x = new XMLHttpRequest();
+    x.open("POST", "/api/upload"); x.setRequestHeader("X-CER-Token", TOKEN);
+    uploading = true; $("uploading").hidden = false; $("uploadBar").style.width = "0";
+    x.upload.onprogress = (e) => { if (e.lengthComputable) $("uploadBar").style.width = (e.loaded / e.total * 100) + "%"; };
+    x.onloadend = () => {
+      uploading = false; setTimeout(() => ($("uploading").hidden = true), 300);
+      if (x.status !== 200) { let m = "Couldn't add those files"; try { m = JSON.parse(x.responseText).error || m; } catch {} balloon(m, true); }
+      poll();
+    };
+    x.send(fd);
+  }
+  async function filesFromDrop(dt) {
+    const entries = [...(dt.items || [])].map((i) => i.webkitGetAsEntry && i.webkitGetAsEntry()).filter(Boolean);
+    if (!entries.length) return [...dt.files];
+    const out = [];
+    const readAll = (d) => new Promise((res) => { const r = d.createReader(), acc = []; const nx = () => r.readEntries((es) => { if (!es.length) return res(acc); acc.push(...es); nx(); }, () => res(acc)); nx(); });
+    async function walk(e) {
+      if (out.length > 1000 || e.name.startsWith(".")) return;
+      if (e.isFile) out.push(await new Promise((res) => e.file(res, () => res(null))));
+      else if (e.isDirectory) for (const c of await readAll(e)) await walk(c);
+    }
+    for (const e of entries) await walk(e);
+    return out.filter(Boolean);
+  }
+  async function pick(folder) {
+    if (S.native) {
+      if (step !== 1) { batch = ""; go(1); }
+      try { const r = await api("/api/pick"); if (r.added === 0) balloon("Nothing new was added."); } catch (e) { balloon(e.message, true); }
+      poll();
+    } else $(folder ? "folderPicker" : "picker").click();
+  }
+  $("drop").addEventListener("click", (e) => { if (e.target.id === "pickFolder") return; pick(false); });
+  $("pickFolder").addEventListener("click", (e) => { e.stopPropagation(); pick(true); });
+  for (const id of ["picker", "folderPicker"]) $(id).addEventListener("change", (e) => { if (e.target.files.length) upload(e.target.files); e.target.value = ""; });
+  document.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "o") { e.preventDefault(); pick(false); }
+    if ((e.metaKey || e.ctrlKey) && e.key === ",") { e.preventDefault(); openOptions(); }
+    if (e.key === "Enter" && !$("modal").classList.contains("on") && document.activeElement.tagName !== "INPUT" && !$("next").disabled) $("next").click();
+    if (e.key === "Escape") $("modal").classList.remove("on");
+  });
+  let depth = 0;
+  window.addEventListener("dragenter", (e) => { e.preventDefault(); depth++; $("drop").classList.add("over"); });
+  window.addEventListener("dragleave", (e) => { e.preventDefault(); if (--depth <= 0) { depth = 0; $("drop").classList.remove("over"); } });
+  window.addEventListener("dragover", (e) => { e.preventDefault(); if (e.dataTransfer) e.dataTransfer.dropEffect = "copy"; });
+  window.addEventListener("drop", async (e) => { e.preventDefault(); depth = 0; $("drop").classList.remove("over"); if (e.dataTransfer) upload(await filesFromDrop(e.dataTransfer)); });
+  $("files").addEventListener("click", async (e) => {
+    const a = e.target.closest("[data-act=unstage]"); if (!a) return;
+    const tr = a.closest("tr"); tr.style.opacity = ".4";
+    await api("/api/unstage/" + tr.dataset.id).catch((er) => balloon(er.message, true)); poll();
+  });
+
+  // ---------- step 2 ----------
+  const PRESETS = {
+    write: { layout: "slides", noteSpace: "remarkable", paper: "lined", pageNumbers: true },
+    print: { layout: "handout3", noteSpace: "none", pageNumbers: true },
+    plain: { layout: "slides", noteSpace: "none", pageNumbers: false },
+  };
+  const presetOf = (o) => o.noteSpace !== "none" ? "write" : o.layout.startsWith("handout") ? "print" : "plain";
+  function setOpts(p) { opts = { ...opts, ...p }; optsDirty = true; renderOpts(); renderNav(); }
+  function renderOpts() {
+    if (!opts) return;
+    const p = presetOf(opts), slides = !good().length || good().some((f) => f.slides);
+    for (const c of $("choices").children) c.classList.toggle("on", c.dataset.p === p);
+    for (const b of $("paperPills").children) b.classList.toggle("on", b.dataset.v === opts.paper);
+    $("paperOpt").hidden = opts.noteSpace === "none";
+    $("layoutOpt").hidden = !slides;
+    $("layout").value = opts.layout;
+    for (const k of ["pageNumbers", "compress", "merge"]) $(k).checked = !!opts[k];
+    if (document.activeElement !== $("prefix")) $("prefix").value = opts.prefix || "";
+    preview();
+  }
+  $("choices").addEventListener("click", (e) => { const c = e.target.closest(".choice"); if (c) setOpts(PRESETS[c.dataset.p]); });
+  $("moreToggle").addEventListener("click", () => { const m = $("more"); m.hidden = !m.hidden; $("moreToggle").classList.toggle("open", !m.hidden); });
+  $("paperPills").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) setOpts({ paper: b.dataset.v }); });
+  $("layout").addEventListener("change", (e) => setOpts({ layout: e.target.value }));
+  for (const k of ["pageNumbers", "compress", "merge"]) $(k).addEventListener("change", (e) => setOpts({ [k]: e.target.checked }));
+  $("prefix").addEventListener("input", (e) => { opts.prefix = e.target.value; optsDirty = true; });
+
+  function preview() {
+    const o = opts, g = good();
+    const slides = !g.length || g.some((f) => f.slides);
+    const handout = slides && o.layout.startsWith("handout"), notes = slides && o.layout === "notes";
+    const base = handout || notes || !slides ? { w: 8.5, h: 11 } : { w: 16, h: 9 };
+    const page = { ...base }; let area = null;
+    if (o.noteSpace === "remarkable") {
+      const r = 3 / 4;
+      if (base.w / base.h > r + .01) { page.h = base.w / r; area = { x: 0, y: base.h, w: base.w, h: page.h - base.h }; }
+      else if (base.w / base.h < r - .01) { page.w = base.h * r; area = { x: base.w, y: 0, w: page.w - base.w, h: base.h }; }
+    } else if (o.noteSpace === "bottom") { area = { x: 0, y: base.h, w: base.w, h: base.h * .8 }; page.h = base.h * 1.8; }
+    else if (o.noteSpace === "right") { area = { x: base.w, y: 0, w: base.w * .6, h: base.h }; page.w = base.w * 1.6; }
+    const sc = Math.min(150 / page.w, 140 / page.h), px = (v) => (v * sc).toFixed(1) + "px";
+    const pv = $("pv"); pv.style.width = px(page.w); pv.style.height = px(page.h); pv.classList.toggle("stack", !!o.merge);
+    let h = "";
+    if (handout) {
+      const n = +o.layout.slice(7), cols = n >= 4 ? 2 : 1, rows = Math.ceil(n / cols), cw = base.w * .86 / cols, ch = base.h * .86 / rows;
+      for (let i = 0; i < n; i++) {
+        const c = i % cols, r = Math.floor(i / cols), x = base.w * .07 + c * cw, y = base.h * .07 + r * ch, sw = cols === 1 ? cw * .55 : cw * .92, sh = Math.min(sw * 9 / 16, ch * .85);
+        h += `<div class="sl" style="left:${px(x)};top:${px(y)};width:${px(sw)};height:${px(sh)}"></div>`;
+        if (cols === 1) h += `<div class="notes" style="left:${px(x + cw * .6)};top:${px(y)};width:${px(cw * .4)};height:${px(sh)}"></div>`;
+      }
+    } else if (notes) h += `<div class="sl" style="left:${px(base.w * .1)};top:${px(base.h * .06)};width:${px(base.w * .8)};height:${px(base.w * .45)}"></div><div class="notes" style="left:${px(base.w * .1)};top:${px(base.h * .5)};width:${px(base.w * .8)};height:${px(base.h * .4)}"></div>`;
+    else if (slides) h += `<div class="sl" style="left:0;top:0;width:${px(base.w)};height:${px(base.h)}"></div>`;
+    else h += `<div class="doc" style="left:${px(base.w * .12)};top:${px(base.h * .08)};width:${px(base.w * .76)};height:${px(base.h * .84)}"></div>`;
+    if (area) h += `<div class="area ${o.paper}" style="left:${px(area.x + area.w * .05)};top:${px(area.y + area.h * .05)};width:${px(area.w * .9)};height:${px(area.h * .9)}"></div>`;
+    if (o.pageNumbers) h += `<div class="pno">1 / 12</div>`;
+    pv.innerHTML = h;
+    const w = [handout ? `${o.layout.slice(7)} slides per page` : notes ? "Slide with speaker notes" : slides ? "One slide per page" : "Same pages as the original"];
+    if (area) w.push(o.paper === "blank" ? "blank writing space" : `${o.paper === "lined" ? "lined" : o.paper} writing space`);
+    if (o.pageNumbers) w.push("page numbers");
+    if (o.merge) w.push("plus one combined PDF");
+    $("pvText").textContent = w.join(", ") + ".";
+  }
+
+  // ---------- step 3 ----------
+  const batchJobs = () => S.jobs.filter((j) => batch && j.batch === batch).sort((a, b) => (a.combined - b.combined) || (a.created - b.created) || (a.id < b.id ? -1 : 1));
+  let codeDraft = "", bannerSig = "";
+  function renderConnect() {
+    const box = $("connectBox"), m = method(), rm = S.remarkable;
+    let html = "";
+    if (m === "cloud" && !rm.connected) {
+      html = `<div class="connect"><b class="t">📡 Connect your reMarkable (one time)</b>
+        <ol><li><a data-c="page">Open my.remarkable.com</a> and sign in — it shows an 8-letter code.</li>
+        <li>Type the code here: <input class="txt code" id="rmCode" maxlength="8" placeholder="abcdefgh" spellcheck="false" autocomplete="off"> <button class="btn small primary" data-c="pair">Connect</button></li></ol>
+        <small>No Wi-Fi or account? <a data-c="usb">Use a USB cable instead</a> · <a data-c="mac">just keep them on this Mac</a></small></div>`;
+    } else if (m === "usb") {
+      html = `<div class="connect"><b class="t"><span class="dot ${rm.usb ? "on" : ""}"></span>${rm.usb ? "reMarkable found over USB" : "Looking for your reMarkable…"}</b>
+        ${rm.usb ? "<small>Ready. Files go to your top-level folder.</small>" : "<small>Plug it in with the USB-C cable, then on the tablet turn on <b>Settings → Storage → USB web interface</b>. Prefer Wi-Fi? <a data-c='cloud'>Send over Wi-Fi instead</a></small>"}</div>`;
+    }
+    const sig = m + rm.connected + rm.usb;
+    if (box.dataset.sig !== sig) {
+      const keep = $("rmCode") ? $("rmCode").value : codeDraft;
+      box.dataset.sig = sig; box.innerHTML = html;
+      if ($("rmCode")) { $("rmCode").value = keep; $("rmCode").addEventListener("input", (e) => (codeDraft = e.target.value)); }
+    }
+  }
+  function renderOut() {
+    const jobs = batchJobs(), m = method();
+    const busy = jobs.filter((j) => j.status === "queued" || j.status === "converting").length;
+    const done = jobs.filter((j) => j.status === "done").length, failed = jobs.filter((j) => j.status === "failed").length;
+    const sending = jobs.filter((j) => j.sending).length;
+    $("progBar").style.width = Math.max(4, (done + failed) / (jobs.length || 1) * 100) + "%";
+    $("prog").classList.toggle("busy", busy > 0 || sending > 0);
+    const cur = jobs.find((j) => j.status === "converting") || jobs.find((j) => j.sending);
+    $("statusText").textContent = busy ? (cur ? `${cur.phase || "Working"}: ${cur.name}` : "Waiting…") : cur ? `Sending ${cur.outName}…` : `Finished${failed ? ` — ${failed} couldn't be converted` : ""}`;
+    $("statusCount").textContent = `${done + failed} of ${jobs.length}`;
+    const sent = jobs.filter((j) => j.status === "done" && j.sentTo).length;
+    const unsent = jobs.filter((j) => j.status === "done" && !j.sentTo && !j.sending).length;
+    const unsaved = jobs.filter((j) => j.status === "done" && !j.savedTo).length;
+    $("h3").textContent = busy ? "Making your PDFs…" : !done ? "Hmm, that didn't work" : m === "mac" ? "Your PDFs are ready!" : sent === done ? "It's on your reMarkable!" : sending ? "Sending…" : "Send them to your reMarkable";
+    $("lead3").textContent = busy ? "Keynote, Pages or Numbers may open in the background — that's normal."
+      : !done ? "Check the messages below." : m === "mac" ? "Save each one, or all at once."
+      : sent === done ? (m === "cloud" ? "They'll appear in My files when your tablet syncs." : "They're in your tablet's top-level folder.") : "Send each one, or everything at once.";
+    renderConnect();
+    let banner = "", kind = "";
+    if (!busy && done) {
+      const check = `<div class="check">${CHECK}</div>`;
+      if (m === "mac") { kind = "mac" + (unsaved ? 1 : 0); banner = `${check}<div style="flex:1"><b>${unsaved ? `${plural(done, "PDF")} ready` : "All saved!"}</b>${unsaved ? `Saves to your ${esc(dlName())} folder.` : `Everything is in your ${esc(dlName())} folder.`}</div>${unsaved > 1 ? `<button class="btn go big" id="saveAll">Save all (${unsaved})</button>` : unsaved ? "" : `<button class="btn" id="showDl">Show in Finder</button>`}`; }
+      else { kind = "rm" + (sent === done ? 1 : 0); banner = `${check}<div style="flex:1"><b>${sent === done ? "All sent!" : `${plural(done, "PDF")} ready`}</b>${sent === done ? "Check your reMarkable." : rmReady() ? (sending ? "Sending now…" : "Ready to send.") : "Connect your reMarkable above to send."}</div>
+        ${unsent ? `<button class="btn go big" id="sendAll" ${rmReady() ? "" : "disabled"}>Send ${unsent > 1 ? `all (${unsent})` : "it"} ▸</button>` : ""}`; }
+    }
+    // Only replace the banner when it actually changes, and only animate when it first appears.
+    const sig = banner;
+    if (sig !== bannerSig) {
+      const fresh = kind && !$("doneBanner").firstChild;
+      bannerSig = sig;
+      $("doneBanner").innerHTML = banner ? `<div class="done-banner${fresh ? " fresh" : ""}">${banner}</div>` : "";
+    }
+    const rows = jobs.map((j) => {
+      let st, act = [];
+      if (j.status === "done") {
+        st = j.sending ? `<span class="state busy"><span class="spin"></span>Sending</span>` : j.sentTo ? `<span class="sent">✔ On reMarkable</span>` : j.savedTo ? `<span class="state ok">✔ Saved</span>` : `<span class="state ok">Ready</span>`;
+        if (m !== "mac" && !j.sentTo && !j.sending) act.push(`<button class="btn small primary" data-act="send" ${rmReady() ? "" : "disabled"}>Send</button>`);
+        if (m === "mac" && !j.savedTo) act.push(`<button class="btn small primary" data-act="download">Save</button>`);
+        else act.push(j.savedTo ? `<a data-act="reveal">Show</a>` : `<a data-act="download">Save to Mac</a>`);
+        act.push(`<a data-act="open">Open</a>`);
+      } else if (j.status === "failed") {
+        st = `<span class="state bad">✖ Failed</span>`;
+        if (j.canRetry) act.push(`<a data-act="retry">Try again</a>`);
+      } else st = `<span class="state busy"><span class="spin"></span>${j.status === "queued" ? "Waiting" : "Working"}</span>`;
+      const name = j.status === "failed" ? j.name : j.outName;
+      const err = j.status === "failed" ? `<div class="err">${esc(j.error)}</div>` : j.sendError ? `<div class="send-err">⚠ ${esc(j.sendError)}</div>` : "";
+      return `<tr data-id="${j.id}"><td><div class="nm">${icon(j.combined ? "PDF" : j.kind)}<span title="${esc(j.name)}">${esc(name)}${j.combined ? " <i style='font-weight:normal;color:var(--ink-3)'>(all in one)</i>" : ""}</span></div>${err}</td>
+        <td class="num">${j.pages || "—"}</td><td class="num">${size(j.size) || "—"}</td><td>${st}</td><td class="act">${act.join(" &nbsp;")}</td></tr>`;
+    }).join("");
+    if ($("outRows").dataset.sig !== rows) { $("outRows").dataset.sig = rows; $("outRows").innerHTML = rows || `<tr class="empty-row"><td colspan="5">Nothing yet.</td></tr>`; }
+  }
+  async function pair() {
+    const code = ($("rmCode") ? $("rmCode").value : codeDraft).trim();
+    try { await api("/api/rm/pair", { code }); codeDraft = ""; balloon("Connected to your reMarkable!"); } catch (e) { balloon(e.message, true); }
+    poll();
+  }
+  $("p3").addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.id === "rmCode") { e.preventDefault(); e.stopPropagation(); pair(); } });
+  $("p3").addEventListener("click", async (e) => {
+    const c = e.target.closest("[data-c]");
+    if (c) {
+      const k = c.dataset.c;
+      if (k === "page") { if (S.native) api("/api/open-pair-page").catch((er) => balloon(er.message, true)); else window.open("https://my.remarkable.com/device/browser/connect", "_blank"); }
+      else if (k === "pair") pair();
+      else saveSettings({ sendTo: k });
+      return;
+    }
+    const t = e.target.closest("#saveAll, #showDl, #sendAll, [data-act]"); if (!t) return;
+    try {
+      if (t.id === "saveAll") { t.disabled = true; const r = await api("/api/download-all", { batch }); balloon(`Saved ${plural(r.saved, "PDF")} to ${r.folder}.`); }
+      else if (t.id === "showDl") await api("/api/open-downloads");
+      else if (t.id === "sendAll") { t.disabled = true; await api("/api/send-all", { batch }); }
+      else {
+        const id = t.closest("tr").dataset.id, a = t.dataset.act;
+        if (a === "send") { t.disabled = true; t.textContent = "Sending…"; await api("/api/send/" + id); balloon("Sent to your reMarkable."); }
+        else if (a === "download") { const r = await api("/api/download/" + id); balloon(`Saved “${r.name}” to ${dlName()}.`); }
+        else if (a === "reveal") await api("/api/reveal/" + id);
+        else if (a === "open") { if (S.native) await api("/api/open/" + id); else window.open("/api/pdf/" + id, "_blank"); }
+        else if (a === "retry") await api("/api/retry/" + id);
+      }
+    } catch (er) { balloon(er.message, true); }
+    poll();
+  });
+
+  // ---------- settings (top row + Options) ----------
+  function renderSettings() {
+    const s = S.settings, rm = S.remarkable, m = s.sendTo || "cloud";
+    root.theme = s.theme || "system"; root.font = s.font || "normal"; root.motion = s.motion || "ghost";
+    if (document.activeElement !== $("qSend")) $("qSend").value = m;
+    if (document.activeElement !== $("qTheme")) $("qTheme").value = s.theme || "system";
+    $("qFont").textContent = s.font === "hand" ? "✍" : "Aa";
+    $("qFont").title = s.font === "hand" ? "Handwritten text (click for typed)" : "Typed text (click for handwritten)";
+    for (const [id, v] of [["themePills", s.theme || "system"], ["fontPills", s.font || "normal"], ["motionPills", s.motion || "ghost"], ["sendPills", m]])
+      for (const b of $(id).children) b.classList.toggle("on", b.dataset.v === v);
+    for (const k of ["autoSend", "autoSave", "remember", "skipStyle"]) $(k).checked = !!s[k];
+    $("splashOn").checked = !!s.splash;
+    $("dlPath").textContent = S.downloadDir; $("dlPath").title = S.downloadDir;
+    $("rmStatusRow").hidden = m === "mac";
+    $("rmStatus").innerHTML = m === "usb" ? `<span class="dot ${rm.usb ? "on" : ""}"></span>${rm.usb ? "Tablet found" : "Not plugged in"}`
+      : rm.connected ? `<span class="dot on"></span>Connected &nbsp;<a id="rmDisconnect">Disconnect</a>` : `<span class="dot"></span>Not connected — you'll be asked in step 3`;
+    const e = S.engines;
+    $("engines").innerHTML = [["Keynote", e.keynote], ["Pages", e.pages], ["Numbers", e.numbers], ["Pictures", e.images], ["LibreOffice", e.libreoffice]].map(([n, ok]) => `<span class="${ok ? "yes" : ""}">${ok ? "✔" : "✖"} ${n}</span>`).join("");
+    $("chooseDl").hidden = !S.native; $("quit").hidden = !S.native;
+  }
+  async function saveSettings(p) {
+    S.settings = { ...S.settings, ...p }; render();
+    try { S.settings = await api("/api/settings", S.settings); } catch (e) { balloon(e.message, true); }
+    render();
+  }
+  function openOptions() { $("modal").classList.add("on"); }
+  $("openSettings").addEventListener("click", openOptions);
+  for (const id of ["closeModal", "okModal"]) $(id).addEventListener("click", () => $("modal").classList.remove("on"));
+  $("modal").addEventListener("click", (e) => { if (e.target.id === "modal") $("modal").classList.remove("on"); });
+  $("qSend").addEventListener("change", (e) => saveSettings({ sendTo: e.target.value }));
+  $("qTheme").addEventListener("change", (e) => saveSettings({ theme: e.target.value }));
+  $("qFont").addEventListener("click", () => saveSettings({ font: S.settings.font === "hand" ? "normal" : "hand" }));
+  for (const k of ["autoSend", "autoSave", "remember", "skipStyle"]) $(k).addEventListener("change", (e) => saveSettings({ [k]: e.target.checked }));
+  $("splashOn").addEventListener("change", (e) => saveSettings({ splash: e.target.checked }));
+  for (const [id, key] of [["themePills", "theme"], ["fontPills", "font"], ["motionPills", "motion"], ["sendPills", "sendTo"]])
+    $(id).addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) saveSettings({ [key]: b.dataset.v }); });
+  $("rmStatus").addEventListener("click", async (e) => { if (e.target.id === "rmDisconnect") { await api("/api/rm/disconnect").catch(() => {}); balloon("Disconnected."); poll(); } });
+  $("chooseDl").addEventListener("click", async () => { try { const r = await api("/api/choose-download-dir"); if (!r.cancelled) balloon("Saving to " + r.downloadDir.split("/").pop()); } catch (e) { balloon(e.message, true); } poll(); });
+  for (const id of ["openDl", "openDl2"]) $(id).addEventListener("click", () => api("/api/open-downloads").catch((e) => balloon(e.message, true)));
+  $("quit").addEventListener("click", () => api("/api/quit").catch(() => {}));
+
+  // ---------- polling ----------
+  function render() { renderNav(); renderFiles(); renderOpts(); renderOut(); renderSettings(); }
+  let first = true;
+  async function poll() {
+    clearTimeout(timer);
+    try {
+      const d = await (await fetch("/api/state", { cache: "no-store" })).json();
+      Object.assign(S, d); S.remarkable = d.remarkable || {};
+      if (!opts || !optsDirty) opts = { ...d.settings.defaults };
+      if (first) {
+        first = false;
+        if (d.batch && d.jobs.some((j) => j.batch === d.batch && (j.status === "queued" || j.status === "converting"))) { batch = d.batch; step = 3; $("p1").hidden = true; $("p3").hidden = false; }
+      }
+      render();
+      const sending = d.jobs.some((j) => j.sending);
+      timer = setTimeout(poll, d.busy || uploading || sending || (method() === "usb" && step === 3) ? 700 : 2000);
+    } catch { timer = setTimeout(poll, 2500); }
+  }
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) poll(); });
+  poll();
+})();
+</script>
+</body>
+</html>

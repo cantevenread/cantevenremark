@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleName</key>
+	<string>cantevenReMark</string>
+	<key>CFBundleDisplayName</key>
+	<string>cantevenReMark</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.husambunni.cantevenremark</string>
+	<key>CFBundleExecutable</key>
+	<string>cantevenremark</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
+	<key>CFBundleShortVersionString</key>
+	<string>__VERSION__</string>
+	<key>CFBundleVersion</key>
+	<string>__VERSION__</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>12.0</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.productivity</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>cantevenReMark uses Keynote, Pages and Numbers to turn your files into PDFs.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+	<key>NSHumanReadableCopyright</key>
+	<string>cantevenReMark · made for Husam</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Documents to convert</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.openxmlformats.presentationml.presentation</string>
+				<string>com.microsoft.powerpoint.ppt</string>
+				<string>com.apple.keynote.key</string>
+				<string>org.openxmlformats.wordprocessingml.document</string>
+				<string>com.microsoft.word.doc</string>
+				<string>com.apple.iwork.pages.sffpages</string>
+				<string>com.apple.pages.pages</string>
+				<string>org.openxmlformats.spreadsheetml.sheet</string>
+				<string>com.microsoft.excel.xls</string>
+				<string>com.apple.iwork.numbers.sffnumbers</string>
+				<string>public.comma-separated-values-text</string>
+				<string>public.rtf</string>
+				<string>public.plain-text</string>
+				<string>net.daringfireball.markdown</string>
+				<string>public.html</string>
+				<string>public.image</string>
+				<string>com.adobe.pdf</string>
+				<string>org.oasis-open.opendocument.text</string>
+				<string>org.oasis-open.opendocument.presentation</string>
+				<string>org.oasis-open.opendocument.spreadsheet</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>cantevenReMark saves your PDFs to the Downloads folder when you press Download.</string>
+</dict>
+</plist>
